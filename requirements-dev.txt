@@ -1,0 +1,4 @@
+-r requirements.txt
+mypy==0.961
+vermin==1.4.0
+Cython==0.29.30

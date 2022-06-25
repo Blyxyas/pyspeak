@@ -1,0 +1,5 @@
+.mpypy_cache
+.vscode
+venv
+.filehash/*
+out/*
