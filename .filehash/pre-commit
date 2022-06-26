@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# This commit message is meant to do various things:
+# 1. Check if the (hidden in .gitignore) `lock.sha1` file has the files that corresponds.
+
+output=$(eval sha1sum -c .filehash/lock.sha1)
+while IFS=' ' read -ra SPLIT; do
+  echo -e "\033[1;33mChecking Hashes...$i\033[0m"
+  for i in "${SPLIT[@]}"; do
+  # Check if current split is a keyword and not a path;
+    if [ "$i" == "OK" ] || [ "$i" == "FAILED" ]; then
+		# Check if $i has failed, if that happens, re-run `make`
+		if [ "$i" == "FAILED" ]; then
+			make
+		fi
+	fi
+  done
+done <<< "$output"

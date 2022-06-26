@@ -1,6 +1,5 @@
-.PHONY: target install check
+.PHONY: target install
 .DEFAULT_GOAL := target
-
 
 install:
 	( \
@@ -10,7 +9,7 @@ install:
 
 target: ./src/**/*
 # Clean lock.sha1
-	rm -rf ./.filehash/lock.sha1
+	@rm -rf ./.filehash/lock.sha1
 # 2. Generate the Sha1 Sum and save it to .filehash/lock.sha1
 	@echo -e "\033[1;35mGenerating Sha1 Sums...\033[0m"
 	@for file in $^; do \
@@ -24,4 +23,6 @@ target: ./src/**/*
 
 # 3. Generate the stub files (https://peps.python.org/pep-0484/#stub-files) with MyPy
 	@echo -e "\033[1;33mGenerating stubs\033[0m"
-	@stubgen ./src/
+	@stubgen ./src/ -q
+
+	@echo -e "\033[1;32mDone!\033[0m"
