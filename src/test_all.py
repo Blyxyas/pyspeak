@@ -1,5 +1,6 @@
 from chunking import *
 from mapping import *
+from speak import *
 from typing import List
 
 #
@@ -8,6 +9,7 @@ from typing import List
 # ===================
 #
 
+#@pytest
 def test_into_chunks():
 	mem: int = 2
 	
@@ -47,8 +49,22 @@ def test_into_chunks():
 	print("")
 	print(first_chunks4.base)
 	print(second_chunks4.base)
-	
 
 	# Now, let's assert both results:
 	
-	assert first_chunks1.base == 0
+	assert first_chunks1.base == [[1, 2], [3, 4], [5, 6], [7, 8]]
+	assert second_chunks1.base == [[1, 2], [3, 4], [5, 6], [7, 8], [8, 9]]
+
+#@pytest
+def test_translate():
+	to_translate: List[str] = ["A B C D", "A B C D"]
+	translated = translate(to_translate)
+
+	for tuple_ in translated:
+		for (i, letter) in enumerate(tuple_):
+			rawletter = to_translate[0].split(" ")[i]
+			t_rawletter = ((((ord(rawletter) << 1) + 1) << 1) + 1)
+			assert t_rawletter == letter
+
+#@pytest
+def 
