@@ -1,5 +1,8 @@
+
 .mpypy_cache
+.pytest_cache
 .vscode
 venv
 .filehash/lock.sha1
 out/*
+**/__pycache__

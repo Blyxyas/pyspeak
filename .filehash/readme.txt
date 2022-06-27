@@ -1,0 +1,1 @@
+To enable the hook in your local repo you need to copy the file into your `.git/hooks/` directory (without changing the name), the pre-commit hook is just a script I made to ensure that all commits contains new stub files and static typing (So we don't waste cloud resources)
