@@ -65,6 +65,6 @@ def test_translate():
 			rawletter = to_translate[0].split(" ")[i]
 			t_rawletter = ((((ord(rawletter) << 1) + 1) << 1) + 1)
 			assert t_rawletter == letter
+			assert letter == ((((ord(rawletter) << 1) + 1) << 1) + 1)
+			assert letter == ((((ord(to_translate[1].split(" ")[i]) << 1) + 1) << 1) + 1)
 
-#@pytest
-def 

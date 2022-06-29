@@ -3,7 +3,7 @@ from typing import List, Tuple, Union
 
 @dataclass
 class chunks:
-	base: Union[List[Tuple[int]], Tuple[int, ...]]
+	base: Union[List[Tuple[int]], Tuple[int]]
 
 def into_chunks(l: List[int], memory: int) -> chunks:
 	"""
@@ -14,13 +14,15 @@ def into_chunks(l: List[int], memory: int) -> chunks:
 	`[1, 2, 3, 4, 5, 6, 7, 8]` → `[(1, 2), (3, 4), (5, 6), (7, 8)]`
 	"""
 	if memory >= len(l):
+		print(tuple(l))
 		return chunks(
 			base = tuple(l)
 		)
 
 	tmpchunks: list = []
 
-	for i in l[memory - 1::memory]:
+	for i in l[memory::memory]:
+		print(i)
 		tmpchunks.append(l[i - memory:i])
 	
 	if len(l) % memory != 0:
@@ -29,3 +31,5 @@ def into_chunks(l: List[int], memory: int) -> chunks:
 	return chunks(
 		base = tmpchunks
 	)
+
+print(into_chunks([234, 43243, 423], 2))
